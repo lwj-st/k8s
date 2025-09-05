@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: net-test
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: net-test-pod
+  namespace: net-test
+  labels:
+    app: net-test
+spec:
+  containers:
+  - name: nginx
+    image: nginx:alpine
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: net-test-svc
+  namespace: net-test
+spec:
+  type: NodePort   # 既能通过 ClusterIP 也能通过 NodePort 访问
+  selector:
+    app: net-test
+  ports:
+  - port: 80          # ClusterIP 访问端口
+    targetPort: 80    # Pod 容器端口
+    nodePort: 30080   # NodePort（你可以换个不冲突的）
+    protocol: TCP
+
+# 宿主机访问/集群任意节点      
+#   kubectl get svc -n net-test 查看ClusterIP 并 curl -v http://<ClusterIP>:80
+#   或直接访问 curl http://<宿主机真实IP>:30080  不能用127.0.0.1 或 localhost
+#
+# pod内测试
+#  在 net-test 命名空间的 Pod 内 curl http://net-test-svc:80
+#  在不同命名空间 curl http://net-test-svc.net-test.svc.cluster.local:80
+
