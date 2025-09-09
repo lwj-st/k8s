@@ -9,7 +9,7 @@ metadata:
 type: Opaque
 stringData:
   name: juicefs-vol
-  metaurl: "postgres://juicefs:juicefs-pass@10.233.5.73:5432/juicefs?sslmode=disable"   # 数据库地址
+  metaurl: "postgres://juicefs:juicefs-pass@postgres-svc.juicefs.svc.cluster.local:5432/juicefs?sslmode=disable"   # 数据库地址
   storage: s3
   bucket: http://myminio-hl.minio.svc.cluster.local:9000/lwj-bucket  # 存储桶地址
   access-key: 756uLvijiSFLWyhrAn0n  # 访问密钥, 在minio中创建
