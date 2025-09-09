@@ -3,12 +3,17 @@ kind: Secret
 metadata:
   name: juicefs-secret
   namespace: juicefs
+  labels:
+    # 增加该标签以启用认证信息校验
+    juicefs.com/validate-secret: "true"
 type: Opaque
 stringData:
   name: juicefs-vol
-  metaurl: "postgres://juicefs:juicefs-pass@10.233.4.87:5432/juicefs?sslmode=disable"
-  storage: file
-  bucket: /mnt/juicefs
+  metaurl: "postgres://juicefs:juicefs-pass@10.233.5.73:5432/juicefs?sslmode=disable"   # 数据库地址
+  storage: s3
+  bucket: http://myminio-hl.minio.svc.cluster.local:9000/lwj-bucket  # 存储桶地址
+  access-key: 756uLvijiSFLWyhrAn0n  # 访问密钥, 在minio中创建
+  secret-key: ZvXw116FFrAuBharqyuSO6NAfjSgWiFfzICrKXry  # 密钥, 在minio中创建
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -31,7 +36,7 @@ spec:
   - ReadWriteMany
   resources:
     requests:
-      storage: 100Gi
+      storage: 10G
   storageClassName: juicefs-sc
 ---
 apiVersion: apps/v1
@@ -51,7 +56,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: busybox
+        image: registry.cn-hangzhou.aliyuncs.com/liwenjian123/busybox:latest
         command: ["/bin/sh", "-c"]
         args:
         - |
@@ -66,4 +71,3 @@ spec:
       - name: juicefs-vol
         persistentVolumeClaim:
           claimName: juicefs-pvc
-

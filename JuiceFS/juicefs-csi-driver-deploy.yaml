@@ -524,7 +524,7 @@ spec:
               fieldPath: metadata.namespace
         - name: DASHBOARD_IMAGE
           value: juicedata/csi-dashboard:v0.29.2
-        image: juicedata/csi-dashboard:v0.29.2
+        image: registry.cn-hangzhou.aliyuncs.com/liwenjian123/csi-dashboard:v0.29.2
         name: dashboard
         ports:
         - containerPort: 8088
@@ -593,7 +593,7 @@ spec:
           value: /var/lib/juicefs/volume
         - name: JUICEFS_CONFIG_PATH
           value: /var/lib/juicefs/config
-        image: juicedata/juicefs-csi-driver:v0.29.2
+        image: registry.cn-hangzhou.aliyuncs.com/liwenjian123/juicefs-csi-driver:v0.29.2
         livenessProbe:
           failureThreshold: 5
           httpGet:
@@ -638,7 +638,7 @@ spec:
         env:
         - name: ADDRESS
           value: /var/lib/csi/sockets/pluginproxy/csi.sock
-        image: registry.k8s.io/sig-storage/csi-provisioner:v2.2.2
+        image: registry.cn-hangzhou.aliyuncs.com/liwenjian123/csi-provisioner:v2.2.2
         name: csi-provisioner
         volumeMounts:
         - mountPath: /var/lib/csi/sockets/pluginproxy/
@@ -651,7 +651,7 @@ spec:
         env:
         - name: ADDRESS
           value: /var/lib/csi/sockets/pluginproxy/csi.sock
-        image: registry.k8s.io/sig-storage/csi-resizer:v1.9.0
+        image: registry.cn-hangzhou.aliyuncs.com/liwenjian123/csi-resizer:v1.9.0
         name: csi-resizer
         volumeMounts:
         - mountPath: /var/lib/csi/sockets/pluginproxy/
@@ -664,7 +664,7 @@ spec:
           value: /csi/csi.sock
         - name: HEALTH_PORT
           value: "9909"
-        image: registry.k8s.io/sig-storage/livenessprobe:v2.11.0
+        image: registry.cn-hangzhou.aliyuncs.com/liwenjian123/livenessprobe:v2.11.0
         name: liveness-probe
         volumeMounts:
         - mountPath: /csi
@@ -748,7 +748,7 @@ spec:
           value: /var/lib/juicefs/volume
         - name: JUICEFS_CONFIG_PATH
           value: /var/lib/juicefs/config
-        image: juicedata/juicefs-csi-driver:v0.29.2
+        image: registry.cn-hangzhou.aliyuncs.com/liwenjian123/juicefs-csi-driver:v0.29.2
         livenessProbe:
           failureThreshold: 5
           httpGet:
@@ -798,7 +798,7 @@ spec:
           value: /csi/csi.sock
         - name: DRIVER_REG_SOCK_PATH
           value: /var/lib/kubelet/csi-plugins/csi.juicefs.com/csi.sock
-        image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.9.0
+        image: registry.cn-hangzhou.aliyuncs.com/liwenjian123/csi-node-driver-registrar:v2.9.0
         name: node-driver-registrar
         volumeMounts:
         - mountPath: /csi
@@ -813,7 +813,7 @@ spec:
           value: /csi/csi.sock
         - name: HEALTH_PORT
           value: "9909"
-        image: registry.k8s.io/sig-storage/livenessprobe:v2.11.0
+        image: registry.cn-hangzhou.aliyuncs.com/liwenjian123/livenessprobe:v2.11.0
         name: liveness-probe
         volumeMounts:
         - mountPath: /csi
@@ -869,3 +869,4 @@ metadata:
 spec:
   attachRequired: false
   podInfoOnMount: true
+  
