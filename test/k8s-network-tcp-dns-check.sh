@@ -38,7 +38,7 @@ kubectl get svc -A -o json | jq -r '
 ' | sort -u > "$LOCAL_TARGETS"
 
 echo "✅ 已生成 $LOCAL_TARGETS"
-head -n 5 "$LOCAL_TARGETS"
+# head -n 5 "$LOCAL_TARGETS"
 echo "..."
 
 # ============================
