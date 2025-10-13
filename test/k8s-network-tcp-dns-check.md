@@ -35,3 +35,8 @@ pod "tmp-shell" deleted
 ✅ 全部完成！
 ```
 
+## 手动验证
+```bash
+kubectl run tmp-shell --rm -i --tty --image=registry.cn-hangzhou.aliyuncs.com/liwenjian123/netshoot:v0.14 -- /bin/bash
+```
+
