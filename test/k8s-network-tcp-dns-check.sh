@@ -49,8 +49,8 @@ cat > "$LOCAL_SCRIPT" <<'EOF'
 input_file="/tmp/targets.txt"
 
 # 白名单定义（DNS和TCP都适用）
+# DNS_WHITELIST 例："kubelet.kube-system.svc.cluster.local"  无端口
 DNS_WHITELIST=(
-  "kubelet.kube-system.svc.cluster.local"
 )
 TCP_WHITELIST=(
   "istio-ingressgateway.istio-system.svc.cluster.local:443"
