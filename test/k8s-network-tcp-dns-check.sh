@@ -57,6 +57,17 @@ TCP_WHITELIST=(
   "istio-ingressgateway.istio-system.svc.cluster.local:80"
   "kubelet.kube-system.svc.cluster.local:10255"
   "kubelet.kube-system.svc.cluster.local:4194"
+  "alertmanager-operated.monitoring.svc.cluster.local:9094"
+  "kube-prom-stack-kube-prome-kube-controller-manager.kube-system.svc.cluster.local:10257"
+  "kube-prom-stack-kube-prome-kube-etcd.kube-system.svc.cluster.local:2381"
+  "kube-prom-stack-kube-prome-kube-proxy.kube-system.svc.cluster.local:10249"
+  "kube-prom-stack-kube-prome-kube-scheduler.kube-system.svc.cluster.local:10259"
+  "kube-prom-stack-kube-prome-kubelet.kube-system.svc.cluster.local:10255"
+  "kube-prom-stack-kube-prome-kubelet.kube-system.svc.cluster.local:4194"
+  "zookeeper-headless.app-graviton-middleware.svc.cluster.local:2888"
+  "zookeeper-headless.app-graviton-middleware.svc.cluster.local:3888"
+  "zookeeper.app-graviton-middleware.svc.cluster.local:2888"
+  "zookeeper.app-graviton-middleware.svc.cluster.local:3888"
 )
 
 in_whitelist() {
